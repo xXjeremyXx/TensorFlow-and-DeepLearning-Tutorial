@@ -94,9 +94,7 @@ class Network():
 
 			# Training computation.
 			logits = model(self.tf_train_samples)
-			self.loss = tf.reduce_mean(
-				tf.nn.softmax_cross_entropy_with_logits(logits, self.tf_train_labels)
-			)
+			self.loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=self.tf_train_labels,logits=logits))
 
 			# Optimizer.
 			self.optimizer = tf.train.GradientDescentOptimizer(0.0001).minimize(self.loss)
